@@ -83,25 +83,39 @@
 </head>
 <body class="bg-[#0a0d14] text-slate-100 min-h-screen font-sans bg-mesh selection:bg-indigo-500 selection:text-white flex flex-col justify-between">
 
-  <!-- Minimal Header: ONLY Site Name & Submit Button -->
+  <!-- Minimal Header: ONLY Site Name on Left & Policy, TOS, Submit on Right -->
   <header class="sticky top-0 z-40 border-b border-surface-border glassmorphic">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <!-- Site Logo / Name -->
-      <a href="#" id="homeLogoLink" class="flex items-center gap-2.5 group">
-        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-600 via-indigo-500 to-purple-500 flex items-center justify-center text-white shadow-glow group-hover:scale-105 transition-transform duration-200">
-          <i data-lucide="compass" class="w-5 h-5"></i>
-        </div>
-        <span class="text-xl font-bold tracking-tight bg-gradient-to-r from-white via-indigo-100 to-indigo-300 bg-clip-text text-transparent">WebKoot</span>
+      <!-- Site Logo / Name (No Icon) -->
+      <a href="#" id="homeLogoLink" class="text-xl sm:text-2xl font-extrabold tracking-tight text-white hover:text-indigo-400 transition-colors">
+        WebKoot
       </a>
 
-      <!-- Submit Button -->
-      <button 
-        id="openSubmitModalBtn"
-        class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-indigo-600 hover:bg-indigo-500 active:scale-95 text-white shadow-glow transition-all duration-200"
-      >
-        <i data-lucide="plus" class="w-4 h-4"></i>
-        <span>Submit</span>
-      </button>
+      <!-- Right Header Actions: Policy, TOS, and Submit -->
+      <div class="flex items-center gap-2 sm:gap-4">
+        <button 
+          id="openPolicyBtn" 
+          class="text-xs sm:text-sm font-medium text-slate-400 hover:text-white transition-colors px-2 py-1"
+        >
+          Privacy Policy
+        </button>
+
+        <button 
+          id="openTosBtn" 
+          class="text-xs sm:text-sm font-medium text-slate-400 hover:text-white transition-colors px-2 py-1"
+        >
+          Terms of Service
+        </button>
+
+        <!-- Submit Button -->
+        <button 
+          id="openSubmitModalBtn"
+          class="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-indigo-600 hover:bg-indigo-500 active:scale-95 text-white shadow-glow transition-all duration-200"
+        >
+          <i data-lucide="plus" class="w-4 h-4"></i>
+          <span>Submit</span>
+        </button>
+      </div>
     </div>
   </header>
 
@@ -110,18 +124,15 @@
     
     <!-- ================= VIEW 1: HOME (CATEGORY CARDS GRID) ================= -->
     <section id="homeView" class="space-y-8 animate-in fade-in duration-300">
-      <!-- Hero Headline -->
-      <div class="text-center max-w-2xl mx-auto pt-4 pb-2">
-        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-3">
-          Explore the Curated Web.
-        </h1>
-        <p class="text-sm sm:text-base text-slate-400">
-          Select a category to discover handpicked platforms, streaming portals, tools, and digital archives.
+      <!-- Hero Headline (Community-controlled) -->
+      <div class="text-center max-w-2xl mx-auto pt-2 pb-2">
+        <p class="text-sm sm:text-base text-slate-400 font-medium">
+          A community-controlled and curated directory index.
         </p>
       </div>
 
-      <!-- Categories Grid -->
-      <div id="categoryCardsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+      <!-- Categories Grid: Pure visual image/poster cards -->
+      <div id="categoryCardsGrid" class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
         <!-- Rendered dynamically via JS -->
       </div>
     </section>
@@ -190,8 +201,52 @@
 
   <!-- Footer -->
   <footer class="border-t border-surface-border py-6 text-center text-xs text-slate-500">
-    <p>WebKoot — Client-side web launchpad ready for GitHub Pages</p>
+    <p>WebKoot — Community-driven open web launchpad ready for GitHub Pages</p>
   </footer>
+
+  <!-- ================= PRIVACY POLICY MODAL ================= -->
+  <div id="policyModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden animate-in fade-in duration-200">
+    <div class="relative w-full max-w-lg bg-[#111522] border border-surface-border rounded-2xl p-6 shadow-glass text-left max-h-[85vh] flex flex-col">
+      <div class="flex items-center justify-between pb-4 border-b border-surface-border">
+        <h2 class="text-base font-bold text-white">Privacy Policy</h2>
+        <button id="closePolicyModalBtn" class="text-slate-400 hover:text-white p-1 rounded-lg">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+      <div class="overflow-y-auto py-4 space-y-3 text-xs sm:text-sm text-slate-300 leading-relaxed">
+        <p><strong class="text-white">Community & Privacy First:</strong> WebKoot operates as a decentralized, client-side web directory. We do not maintain user accounts, sell personal data, or deploy invasive tracking scripts.</p>
+        <p><strong class="text-white">Local Storage:</strong> Any bookmarks or submissions made within your browser are stored locally in your browser's <code class="text-indigo-400">localStorage</code>. Clearing your browsing data will reset any custom links you have added locally.</p>
+        <p><strong class="text-white">External Links:</strong> WebKoot links to third-party services and websites. We do not operate or control third-party privacy policies or site behaviors.</p>
+      </div>
+      <div class="pt-3 border-t border-surface-border flex justify-end">
+        <button id="closePolicyBtnBottom" class="px-4 py-2 rounded-xl text-xs font-semibold bg-surface-card hover:bg-surface-cardHover border border-surface-border text-white">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= TERMS OF SERVICE MODAL ================= -->
+  <div id="tosModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden animate-in fade-in duration-200">
+    <div class="relative w-full max-w-lg bg-[#111522] border border-surface-border rounded-2xl p-6 shadow-glass text-left max-h-[85vh] flex flex-col">
+      <div class="flex items-center justify-between pb-4 border-b border-surface-border">
+        <h2 class="text-base font-bold text-white">Terms of Service</h2>
+        <button id="closeTosModalBtn" class="text-slate-400 hover:text-white p-1 rounded-lg">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+      <div class="overflow-y-auto py-4 space-y-3 text-xs sm:text-sm text-slate-300 leading-relaxed">
+        <p><strong class="text-white">1. Community Curation:</strong> WebKoot is an open index curated by the community for cataloging and discovering internet resources, tools, and entertainment.</p>
+        <p><strong class="text-white">2. Permitted Use:</strong> Users agree to suggest and submit legitimate, safe web links that adhere to general internet safety and copyright standards. Do not submit malicious links, spam, malware, or phishing campaigns.</p>
+        <p><strong class="text-white">3. Disclaimer:</strong> All directory listings are provided "as is". WebKoot does not host, stream, or store any third-party media or copyrighted materials directly on this static site.</p>
+      </div>
+      <div class="pt-3 border-t border-surface-border flex justify-end">
+        <button id="closeTosBtnBottom" class="px-4 py-2 rounded-xl text-xs font-semibold bg-surface-card hover:bg-surface-cardHover border border-surface-border text-white">
+          I Understand
+        </button>
+      </div>
+    </div>
+  </div>
 
   <!-- ================= SUBMIT LINK MODAL ================= -->
   <div id="submitModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm hidden animate-in fade-in duration-200">
@@ -289,79 +344,55 @@
 
   <!-- Application Logic -->
   <script>
-    // --- Categories Configuration ---
+    // --- Categories Configuration with customizable image support ---
     const CATEGORIES = [
       {
         id: "anime",
         title: "Anime",
-        icon: "tv",
-        gradient: "from-pink-500/20 via-purple-500/10 to-transparent",
-        iconColor: "text-pink-400",
-        borderColor: "group-hover:border-pink-500/40",
-        description: "Streaming indices, database trackers, seasonal charts & communities."
+        image: "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=800&auto=format&fit=crop&q=80",
+        fallbackBg: "bg-gradient-to-tr from-pink-900 via-purple-900 to-indigo-950"
       },
       {
         id: "movies",
         title: "Movies & TV",
-        icon: "film",
-        gradient: "from-amber-500/20 via-orange-500/10 to-transparent",
-        iconColor: "text-amber-400",
-        borderColor: "group-hover:border-amber-500/40",
-        description: "Cinema archives, subtitle databases, trailers & recommendation engines."
+        image: "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=800&auto=format&fit=crop&q=80",
+        fallbackBg: "bg-gradient-to-tr from-amber-900 via-orange-950 to-stone-900"
       },
       {
         id: "shops",
-        title: "Shops & Deals",
-        icon: "shopping-bag",
-        gradient: "from-emerald-500/20 via-teal-500/10 to-transparent",
-        iconColor: "text-emerald-400",
-        borderColor: "group-hover:border-emerald-500/40",
-        description: "Price trackers, curated marketplaces, bargain hunting & coupon aggregators."
+        title: "Shops",
+        image: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=800&auto=format&fit=crop&q=80",
+        fallbackBg: "bg-gradient-to-tr from-emerald-950 via-teal-950 to-slate-900"
       },
       {
         id: "tools",
-        title: "Tools & Utilities",
-        icon: "wrench",
-        gradient: "from-indigo-500/20 via-blue-500/10 to-transparent",
-        iconColor: "text-indigo-400",
-        borderColor: "group-hover:border-indigo-500/40",
-        description: "Web apps, file converters, image compressors, formatting & AI tools."
+        title: "Tools",
+        image: "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=800&auto=format&fit=crop&q=80",
+        fallbackBg: "bg-gradient-to-tr from-indigo-950 via-blue-950 to-slate-900"
       },
       {
         id: "gaming",
-        title: "Gaming & Emulation",
-        icon: "gamepad-2",
-        gradient: "from-violet-500/20 via-indigo-500/10 to-transparent",
-        iconColor: "text-violet-400",
-        borderColor: "group-hover:border-violet-500/40",
-        description: "Digital storefronts, indie games, emulator hubs & game mod directories."
+        title: "Gaming",
+        image: "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=800&auto=format&fit=crop&q=80",
+        fallbackBg: "bg-gradient-to-tr from-violet-950 via-purple-950 to-slate-900"
       },
       {
         id: "books",
-        title: "Books & Manga",
-        icon: "book-open",
-        gradient: "from-cyan-500/20 via-sky-500/10 to-transparent",
-        iconColor: "text-cyan-400",
-        borderColor: "group-hover:border-cyan-500/40",
-        description: "Public domain books, comic catalogs, scanlation indices & audiobooks."
+        title: "Books",
+        image: "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=800&auto=format&fit=crop&q=80",
+        fallbackBg: "bg-gradient-to-tr from-cyan-950 via-sky-950 to-slate-900"
       },
       {
         id: "dev",
-        title: "Developer & Code",
-        icon: "code",
-        gradient: "from-blue-500/20 via-cyan-500/10 to-transparent",
-        iconColor: "text-blue-400",
-        borderColor: "group-hover:border-blue-500/40",
-        description: "API hubs, documentation mirrors, CSS generators & repository hosting."
+        title: "Developer",
+        image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&auto=format&fit=crop&q=80",
+        fallbackBg: "bg-gradient-to-tr from-blue-950 via-slate-900 to-black"
       },
       {
         id: "music",
-        title: "Music & Audio",
-        icon: "music",
-        gradient: "from-rose-500/20 via-red-500/10 to-transparent",
-        iconColor: "text-rose-400",
-        borderColor: "group-hover:border-rose-500/40",
-        description: "Royalty-free sounds, ambient generators, radio stations & stream tools."
+        title: "Music",
+        image: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=800&auto=format&fit=crop&q=80",
+        fallbackBg: "bg-gradient-to-tr from-rose-950 via-red-950 to-slate-900"
       }
     ];
 
@@ -550,56 +581,36 @@
 
     function getFaviconUrl(url) {
       const domain = getDomain(url);
-      return `https://www.google.com/s2/favicons?domain=${domain}&sz=64`;
-    }
-
-    // --- Toast Notifications ---
-    let toastTimer;
-    function notify(msg) {
-      const toast = document.getElementById("toast");
-      const toastMsg = document.getElementById("toastMsg");
-      clearTimeout(toastTimer);
-      toastMsg.textContent = msg;
-      toast.classList.remove("translate-y-20", "opacity-0", "pointer-events-none");
-      toast.classList.add("translate-y-0", "opacity-100");
-      toastTimer = setTimeout(() => {
-        toast.classList.remove("translate-y-0", "opacity-100");
-        toast.classList.add("translate-y-20", "opacity-0", "pointer-events-none");
-      }, 2400);
-    }
-
-    // --- Render Home Category Cards ---
+    // --- Render Home Category Cards (Image poster with whole card link) ---
     function renderHomeCategories() {
       const grid = document.getElementById("categoryCardsGrid");
       grid.innerHTML = CATEGORIES.map(cat => {
-        const count = linkItems.filter(l => l.categoryId === cat.id).length;
         return `
-          <div 
-            onclick="navigateToCategory('${cat.id}')"
-            class="group cursor-pointer relative overflow-hidden rounded-2xl bg-surface-card hover:bg-surface-cardHover border border-surface-border ${cat.borderColor} p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-glass flex flex-col justify-between"
+          <a 
+            href="#${cat.id}"
+            class="group relative block aspect-[3/4] sm:aspect-[4/5] rounded-2xl overflow-hidden border border-surface-border hover:border-indigo-500/60 shadow-lg hover:shadow-glow transition-all duration-300 hover:-translate-y-1.5 focus:outline-none focus:ring-2 focus:ring-indigo-500"
           >
-            <!-- Background gradient flare -->
-            <div class="absolute -right-10 -top-10 w-32 h-32 rounded-full bg-gradient-to-br ${cat.gradient} blur-2xl pointer-events-none"></div>
+            <!-- Card Image Background (Easy for you to replace the image URL in the CATEGORIES array) -->
+            <img 
+              src="${cat.image}" 
+              alt="${cat.title}" 
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              onerror="this.onerror=null; this.parentElement.classList.add('${cat.fallbackBg}'); this.style.display='none';"
+            />
 
-            <div>
-              <div class="flex items-center justify-between mb-4">
-                <div class="w-12 h-12 rounded-xl bg-slate-900/90 border border-surface-border flex items-center justify-center ${cat.iconColor} shadow-sm group-hover:scale-110 transition-transform">
-                  <i data-lucide="${cat.icon}" class="w-6 h-6"></i>
-                </div>
-                <span class="text-xs font-mono px-2.5 py-1 rounded-full bg-slate-900 border border-surface-border text-slate-400">
-                  ${count} ${count === 1 ? 'link' : 'links'}
-                </span>
+            <!-- Subtle Gradient Overlay -->
+            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/10 group-hover:via-black/20 transition-colors"></div>
+
+            <!-- Card Label on Bottom -->
+            <div class="absolute inset-x-0 bottom-0 p-4 sm:p-5 flex items-center justify-between">
+              <span class="text-base sm:text-lg font-bold text-white tracking-wide group-hover:text-indigo-300 transition-colors">
+                ${cat.title}
+              </span>
+              <div class="w-8 h-8 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white group-hover:bg-indigo-600 group-hover:border-indigo-500 transition-all">
+                <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-0.5 transition-transform"></i>
               </div>
-
-              <h3 class="text-lg font-bold text-white group-hover:text-indigo-300 transition-colors mb-2">${cat.title}</h3>
-              <p class="text-xs text-slate-400 leading-relaxed">${cat.description}</p>
             </div>
-
-            <div class="pt-5 mt-4 border-t border-surface-border/60 flex items-center justify-between text-xs text-indigo-400 font-semibold">
-              <span>Browse directory</span>
-              <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
-            </div>
-          </div>
+          </a>
         `;
       }).join("");
 
@@ -613,7 +624,7 @@
 
       currentCategoryId = catId;
       document.getElementById("activeCategoryTitle").textContent = category.title;
-      document.getElementById("categoryIconBadge").innerHTML = `<i data-lucide="${category.icon}" class="w-5 h-5 ${category.iconColor}"></i>`;
+      document.getElementById("categoryIconBadge").innerHTML = `<i data-lucide="folder" class="w-5 h-5 text-indigo-400"></i>`;
 
       const allCatLinks = linkItems.filter(l => l.categoryId === catId);
       document.getElementById("activeCategoryCount").textContent = `${allCatLinks.length} resource${allCatLinks.length === 1 ? '' : 's'} available`;
@@ -643,7 +654,6 @@
           return `
             <div class="group relative flex flex-col justify-between p-4 rounded-2xl bg-surface-card hover:bg-surface-cardHover border border-surface-border hover:border-indigo-500/40 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-glow">
               <div>
-                <!-- Top Row: Favicon & Title -->
                 <div class="flex items-start justify-between gap-3 mb-2.5">
                   <div class="flex items-center gap-3 min-w-0">
                     <div class="w-9 h-9 rounded-lg bg-slate-900 border border-surface-border flex items-center justify-center overflow-hidden flex-shrink-0 p-1.5 shadow-sm">
@@ -671,11 +681,9 @@
                   ` : ''}
                 </div>
 
-                <!-- Description -->
-                <p class="text-xs text-slate-400 line-clamp-2 mb-4 leading-relaxed">${link.description || 'Curated directory link on WebKoot.'}</p>
+                <p class="text-xs text-slate-400 line-clamp-2 mb-4 leading-relaxed">${link.description || 'Curated link on WebKoot.'}</p>
               </div>
 
-              <!-- Bottom Actions -->
               <div class="pt-3 border-t border-surface-border flex items-center justify-between text-xs">
                 ${link.badge ? `
                   <span class="inline-flex items-center px-2 py-0.5 rounded-md bg-slate-900 border border-surface-border text-slate-300 text-[10px] font-medium">
@@ -710,6 +718,29 @@
 
       lucide.createIcons();
     }
+
+    // --- Policy & TOS Modals Handling ---
+    const policyModal = document.getElementById("policyModal");
+    const tosModal = document.getElementById("tosModal");
+    const openPolicyBtn = document.getElementById("openPolicyBtn");
+    const openTosBtn = document.getElementById("openTosBtn");
+    const closePolicyModalBtn = document.getElementById("closePolicyModalBtn");
+    const closePolicyBtnBottom = document.getElementById("closePolicyBtnBottom");
+    const closeTosModalBtn = document.getElementById("closeTosModalBtn");
+    const closeTosBtnBottom = document.getElementById("closeTosBtnBottom");
+
+    function openPolicy() { policyModal.classList.remove("hidden"); }
+    function closePolicy() { policyModal.classList.add("hidden"); }
+    function openTos() { tosModal.classList.remove("hidden"); }
+    function closeTos() { tosModal.classList.add("hidden"); }
+
+    openPolicyBtn.addEventListener("click", openPolicy);
+    closePolicyModalBtn.addEventListener("click", closePolicy);
+    closePolicyBtnBottom.addEventListener("click", closePolicy);
+
+    openTosBtn.addEventListener("click", openTos);
+    closeTosModalBtn.addEventListener("click", closeTos);
+    closeTosBtnBottom.addEventListener("click", closeTos);
 
     // --- Router / View Transitions ---
     function navigateToCategory(catId) {
@@ -870,8 +901,10 @@
 
     // Keyboard ESC to close modal
     window.addEventListener("keydown", (e) => {
-      if (e.key === "Escape" && !submitModal.classList.contains("hidden")) {
-        closeModal();
+      if (e.key === "Escape") {
+        if (!submitModal.classList.contains("hidden")) closeModal();
+        if (!policyModal.classList.contains("hidden")) closePolicy();
+        if (!tosModal.classList.contains("hidden")) closeTos();
       }
     });
 
