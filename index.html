@@ -3,15 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>WebKoot — Curated Index & Directory</title>
-
+  <title>WebKoot</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
       darkMode: 'class',
@@ -19,65 +16,48 @@
         extend: {
           fontFamily: {
             sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-            mono: ['"JetBrains Mono"', 'monospace'],
           },
           colors: {
-            brand: {
-              400: '#818cf8',
-              500: '#6366f1',
-              600: '#4f46e5',
-            },
             surface: {
-              dark: '#0a0d14',
-              card: '#111522',
-              cardHover: '#181e30',
-              border: '#1e2438'
+              dark: '#090c13',
+              card: '#111624',
+              border: '#1c2438'
             }
           },
           boxShadow: {
-            'glow': '0 0 30px -5px rgba(99, 102, 241, 0.35)',
-            'glass': '0 8px 32px 0 rgba(0, 0, 0, 0.45)'
+            'glow': '0 0 25px -4px rgba(99, 102, 241, 0.35)',
+            'glass': '0 10px 30px -10px rgba(0, 0, 0, 0.7)'
           }
         }
       }
     }
   </script>
-
   <style>
     ::-webkit-scrollbar {
-      width: 7px;
-      height: 7px;
+      width: 6px;
     }
     ::-webkit-scrollbar-track {
-      background: #0a0d14;
+      background: #090c13;
     }
     ::-webkit-scrollbar-thumb {
-      background: #232b42;
+      background: #1f273d;
       border-radius: 9999px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: #3b4566;
     }
     .bg-mesh {
       background-image: 
-        radial-gradient(circle at 15% 15%, rgba(99, 102, 241, 0.08) 0%, transparent 40%),
-        radial-gradient(circle at 85% 85%, rgba(236, 72, 153, 0.06) 0%, transparent 40%),
-        linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-        linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-      background-size: 100% 100%, 100% 100%, 36px 36px, 36px 36px;
-    }
-    .glassmorphic {
-      background: rgba(14, 18, 28, 0.75);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
+        radial-gradient(circle at 20% 20%, rgba(99, 102, 241, 0.07) 0%, transparent 45%),
+        radial-gradient(circle at 80% 80%, rgba(236, 72, 153, 0.05) 0%, transparent 45%),
+        linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 32px 32px, 32px 32px;
     }
   </style>
 </head>
-<body class="bg-[#0a0d14] text-slate-100 min-h-screen font-sans bg-mesh selection:bg-indigo-500 selection:text-white flex flex-col justify-between">
+<body class="bg-[#090c13] text-slate-100 min-h-screen font-sans bg-mesh selection:bg-indigo-500 selection:text-white flex flex-col justify-between">
 
-  <header class="sticky top-0 z-40 border-b border-surface-border glassmorphic">
+  <header class="sticky top-0 z-40 border-b border-surface-border bg-[#090c13]/85 backdrop-blur-md">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <a href="#" id="homeLogoLink" class="text-xl sm:text-2xl font-extrabold tracking-tight text-white hover:text-indigo-400 transition-colors">
+      <a href="index.html" class="text-xl sm:text-2xl font-extrabold tracking-tight text-white hover:text-indigo-400 transition-colors">
         WebKoot
       </a>
 
@@ -97,8 +77,8 @@
         </button>
 
         <button 
-          id="openSubmitModalBtn"
-          class="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-indigo-600 hover:bg-indigo-500 active:scale-95 text-white shadow-glow transition-all duration-200"
+          id="openSubmitBtn"
+          class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs sm:text-sm font-semibold bg-indigo-600 hover:bg-indigo-500 active:scale-95 text-white shadow-glow transition-all"
         >
           <i data-lucide="plus" class="w-4 h-4"></i>
           <span>Submit</span>
@@ -108,89 +88,209 @@
   </header>
 
   <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
-    <section id="homeView" class="space-y-8">
-      <div class="text-center max-w-2xl mx-auto pt-2 pb-2">
-        <p class="text-sm sm:text-base text-slate-400 font-medium">
-          A community-controlled and curated directory index.
-        </p>
-      </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
 
-      <div id="categoryCardsGrid" class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6"></div>
-    </section>
-
-    <section id="categoryView" class="hidden space-y-6">
-      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-surface-border">
-        <div class="flex items-center gap-3">
-          <button 
-            id="backToHomeBtn"
-            class="p-2 sm:px-3 sm:py-2 rounded-xl bg-surface-card hover:bg-surface-cardHover text-slate-300 hover:text-white border border-surface-border transition-all flex items-center gap-2 text-xs font-semibold group"
-          >
-            <i data-lucide="arrow-left" class="w-4 h-4 group-hover:-translate-x-0.5 transition-transform"></i>
-            <span class="hidden sm:inline">Back to Categories</span>
-          </button>
-          
-          <div class="flex items-center gap-2.5">
-            <div id="categoryIconBadge" class="w-9 h-9 rounded-xl flex items-center justify-center text-white bg-indigo-600/30 border border-indigo-500/30">
-              <i data-lucide="folder" class="w-5 h-5 text-indigo-400"></i>
-            </div>
-            <div>
-              <h2 id="activeCategoryTitle" class="text-xl sm:text-2xl font-bold text-white tracking-tight">Category Name</h2>
-              <span id="activeCategoryCount" class="text-xs text-slate-400 font-mono">0 resources available</span>
-            </div>
+      <a 
+        href="anime.html" 
+        class="group relative h-44 sm:h-48 rounded-2xl overflow-hidden border border-surface-border hover:border-indigo-500/60 shadow-lg hover:shadow-glow transition-all duration-300 hover:-translate-y-1 block"
+      >
+        <img 
+          src="https://images.unsplash.com/photo-1578632767115-351597cf2477?w=1200&auto=format&fit=crop&q=80" 
+          alt="Anime" 
+          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 brightness-75 group-hover:brightness-90"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent"></div>
+        <div class="absolute inset-x-0 bottom-0 p-5 flex items-center justify-between">
+          <span class="text-xl font-bold text-white tracking-wide group-hover:text-indigo-300 transition-colors">
+            Anime
+          </span>
+          <div class="w-9 h-9 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white group-hover:bg-indigo-600 group-hover:border-indigo-500 transition-all">
+            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-0.5 transition-transform"></i>
           </div>
         </div>
+      </a>
 
-        <div class="relative w-full sm:w-72">
-          <i data-lucide="search" class="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400"></i>
-          <input 
-            type="text" 
-            id="categorySearchInput" 
-            placeholder="Filter these links..." 
-            class="w-full bg-surface-card border border-surface-border rounded-xl pl-9 pr-8 py-2 text-xs sm:text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-all"
-          />
-          <button id="clearCategorySearchBtn" class="hidden absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white text-xs">
-            <i data-lucide="x" class="w-3.5 h-3.5"></i>
-          </button>
+      <a 
+        href="movies.html" 
+        class="group relative h-44 sm:h-48 rounded-2xl overflow-hidden border border-surface-border hover:border-indigo-500/60 shadow-lg hover:shadow-glow transition-all duration-300 hover:-translate-y-1 block"
+      >
+        <img 
+          src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=1200&auto=format&fit=crop&q=80" 
+          alt="Movies & TV" 
+          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 brightness-75 group-hover:brightness-90"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent"></div>
+        <div class="absolute inset-x-0 bottom-0 p-5 flex items-center justify-between">
+          <span class="text-xl font-bold text-white tracking-wide group-hover:text-indigo-300 transition-colors">
+            Movies & TV
+          </span>
+          <div class="w-9 h-9 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white group-hover:bg-indigo-600 group-hover:border-indigo-500 transition-all">
+            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-0.5 transition-transform"></i>
+          </div>
         </div>
-      </div>
+      </a>
 
-      <div id="categoryLinksGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"></div>
-
-      <div id="emptyCategoryState" class="hidden py-16 text-center">
-        <div class="w-14 h-14 mx-auto rounded-2xl bg-surface-card flex items-center justify-center text-slate-500 mb-3 border border-surface-border">
-          <i data-lucide="folder-search" class="w-6 h-6"></i>
+      <a 
+        href="shops.html" 
+        class="group relative h-44 sm:h-48 rounded-2xl overflow-hidden border border-surface-border hover:border-indigo-500/60 shadow-lg hover:shadow-glow transition-all duration-300 hover:-translate-y-1 block"
+      >
+        <img 
+          src="https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=1200&auto=format&fit=crop&q=80" 
+          alt="Shops" 
+          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 brightness-75 group-hover:brightness-90"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent"></div>
+        <div class="absolute inset-x-0 bottom-0 p-5 flex items-center justify-between">
+          <span class="text-xl font-bold text-white tracking-wide group-hover:text-indigo-300 transition-colors">
+            Shops
+          </span>
+          <div class="w-9 h-9 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white group-hover:bg-indigo-600 group-hover:border-indigo-500 transition-all">
+            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-0.5 transition-transform"></i>
+          </div>
         </div>
-        <h3 class="text-base font-bold text-white mb-1">No links found</h3>
-        <p class="text-xs text-slate-400 max-w-xs mx-auto mb-5">Be the first to submit a new link into this directory.</p>
-        <button 
-          id="submitToThisCatBtn"
-          class="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white shadow-glow transition-all"
-        >
-          <i data-lucide="plus" class="w-4 h-4"></i> Submit to this category
-        </button>
-      </div>
-    </section>
+      </a>
+
+      <a 
+        href="tools.html" 
+        class="group relative h-44 sm:h-48 rounded-2xl overflow-hidden border border-surface-border hover:border-indigo-500/60 shadow-lg hover:shadow-glow transition-all duration-300 hover:-translate-y-1 block"
+      >
+        <img 
+          src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=1200&auto=format&fit=crop&q=80" 
+          alt="Tools" 
+          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 brightness-75 group-hover:brightness-90"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent"></div>
+        <div class="absolute inset-x-0 bottom-0 p-5 flex items-center justify-between">
+          <span class="text-xl font-bold text-white tracking-wide group-hover:text-indigo-300 transition-colors">
+            Tools
+          </span>
+          <div class="w-9 h-9 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white group-hover:bg-indigo-600 group-hover:border-indigo-500 transition-all">
+            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-0.5 transition-transform"></i>
+          </div>
+        </div>
+      </a>
+
+      <a 
+        href="gaming.html" 
+        class="group relative h-44 sm:h-48 rounded-2xl overflow-hidden border border-surface-border hover:border-indigo-500/60 shadow-lg hover:shadow-glow transition-all duration-300 hover:-translate-y-1 block"
+      >
+        <img 
+          src="https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=1200&auto=format&fit=crop&q=80" 
+          alt="Gaming" 
+          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 brightness-75 group-hover:brightness-90"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent"></div>
+        <div class="absolute inset-x-0 bottom-0 p-5 flex items-center justify-between">
+          <span class="text-xl font-bold text-white tracking-wide group-hover:text-indigo-300 transition-colors">
+            Gaming
+          </span>
+          <div class="w-9 h-9 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white group-hover:bg-indigo-600 group-hover:border-indigo-500 transition-all">
+            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-0.5 transition-transform"></i>
+          </div>
+        </div>
+      </a>
+
+      <a 
+        href="books.html" 
+        class="group relative h-44 sm:h-48 rounded-2xl overflow-hidden border border-surface-border hover:border-indigo-500/60 shadow-lg hover:shadow-glow transition-all duration-300 hover:-translate-y-1 block"
+      >
+        <img 
+          src="https://images.unsplash.com/photo-1512820790803-83ca734da794?w=1200&auto=format&fit=crop&q=80" 
+          alt="Books" 
+          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 brightness-75 group-hover:brightness-90"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent"></div>
+        <div class="absolute inset-x-0 bottom-0 p-5 flex items-center justify-between">
+          <span class="text-xl font-bold text-white tracking-wide group-hover:text-indigo-300 transition-colors">
+            Books
+          </span>
+          <div class="w-9 h-9 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white group-hover:bg-indigo-600 group-hover:border-indigo-500 transition-all">
+            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-0.5 transition-transform"></i>
+          </div>
+        </div>
+      </a>
+
+      <a 
+        href="dev.html" 
+        class="group relative h-44 sm:h-48 rounded-2xl overflow-hidden border border-surface-border hover:border-indigo-500/60 shadow-lg hover:shadow-glow transition-all duration-300 hover:-translate-y-1 block"
+      >
+        <img 
+          src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1200&auto=format&fit=crop&q=80" 
+          alt="Developer" 
+          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 brightness-75 group-hover:brightness-90"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent"></div>
+        <div class="absolute inset-x-0 bottom-0 p-5 flex items-center justify-between">
+          <span class="text-xl font-bold text-white tracking-wide group-hover:text-indigo-300 transition-colors">
+            Developer
+          </span>
+          <div class="w-9 h-9 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white group-hover:bg-indigo-600 group-hover:border-indigo-500 transition-all">
+            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-0.5 transition-transform"></i>
+          </div>
+        </div>
+      </a>
+
+      <a 
+        href="music.html" 
+        class="group relative h-44 sm:h-48 rounded-2xl overflow-hidden border border-surface-border hover:border-indigo-500/60 shadow-lg hover:shadow-glow transition-all duration-300 hover:-translate-y-1 block"
+      >
+        <img 
+          src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=1200&auto=format&fit=crop&q=80" 
+          alt="Music" 
+          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 brightness-75 group-hover:brightness-90"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent"></div>
+        <div class="absolute inset-x-0 bottom-0 p-5 flex items-center justify-between">
+          <span class="text-xl font-bold text-white tracking-wide group-hover:text-indigo-300 transition-colors">
+            Music
+          </span>
+          <div class="w-9 h-9 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white group-hover:bg-indigo-600 group-hover:border-indigo-500 transition-all">
+            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-0.5 transition-transform"></i>
+          </div>
+        </div>
+      </a>
+
+      <a 
+        href="tools.html" 
+        class="group relative h-44 sm:h-48 rounded-2xl overflow-hidden border border-surface-border hover:border-indigo-500/60 shadow-lg hover:shadow-glow transition-all duration-300 hover:-translate-y-1 block"
+      >
+        <img 
+          src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=1200&auto=format&fit=crop&q=80" 
+          alt="More" 
+          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 brightness-75 group-hover:brightness-90"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent"></div>
+        <div class="absolute inset-x-0 bottom-0 p-5 flex items-center justify-between">
+          <span class="text-xl font-bold text-white tracking-wide group-hover:text-indigo-300 transition-colors">
+            More Categories
+          </span>
+          <div class="w-9 h-9 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white group-hover:bg-indigo-600 group-hover:border-indigo-500 transition-all">
+            <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-0.5 transition-transform"></i>
+          </div>
+        </div>
+      </a>
+
+    </div>
   </main>
 
   <footer class="border-t border-surface-border py-6 text-center text-xs text-slate-500">
-    <p>WebKoot — Community-driven open web launchpad ready for GitHub Pages</p>
+    <p>WebKoot</p>
   </footer>
 
   <div id="policyModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden">
-    <div class="relative w-full max-w-lg bg-[#111522] border border-surface-border rounded-2xl p-6 shadow-glass text-left max-h-[85vh] flex flex-col">
+    <div class="relative w-full max-w-lg bg-[#111624] border border-surface-border rounded-2xl p-6 shadow-glass text-left flex flex-col">
       <div class="flex items-center justify-between pb-4 border-b border-surface-border">
         <h2 class="text-base font-bold text-white">Privacy Policy</h2>
-        <button id="closePolicyModalBtn" class="text-slate-400 hover:text-white p-1 rounded-lg">
+        <button id="closePolicyBtn" class="text-slate-400 hover:text-white p-1">
           <i data-lucide="x" class="w-5 h-5"></i>
         </button>
       </div>
-      <div class="overflow-y-auto py-4 space-y-3 text-xs sm:text-sm text-slate-300 leading-relaxed">
-        <p><strong class="text-white">Community & Privacy First:</strong> WebKoot operates as a decentralized, client-side web directory. We do not maintain user accounts, sell personal data, or deploy invasive tracking scripts.</p>
-        <p><strong class="text-white">Local Storage:</strong> Any bookmarks or submissions made within your browser are stored locally in your browser's <code class="text-indigo-400">localStorage</code>. Clearing your browsing data will reset any custom links you have added locally.</p>
-        <p><strong class="text-white">External Links:</strong> WebKoot links to third-party services and websites. We do not operate or control third-party privacy policies or site behaviors.</p>
+      <div class="py-4 space-y-3 text-xs sm:text-sm text-slate-300 leading-relaxed">
+        <p><strong class="text-white">Zero Tracking:</strong> WebKoot is a client-side directory hosted via GitHub Pages. We do not collect cookies, log user identifiers, or track browsing activity.</p>
+        <p><strong class="text-white">Third-Party Sites:</strong> All listed directories connect to external destinations that maintain independent terms and privacy standards.</p>
       </div>
       <div class="pt-3 border-t border-surface-border flex justify-end">
-        <button id="closePolicyBtnBottom" class="px-4 py-2 rounded-xl text-xs font-semibold bg-surface-card hover:bg-surface-cardHover border border-surface-border text-white">
+        <button id="closePolicyBottomBtn" class="px-4 py-2 rounded-xl text-xs font-semibold bg-surface-card hover:bg-slate-800 border border-surface-border text-white transition-all">
           Close
         </button>
       </div>
@@ -198,673 +298,103 @@
   </div>
 
   <div id="tosModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden">
-    <div class="relative w-full max-w-lg bg-[#111522] border border-surface-border rounded-2xl p-6 shadow-glass text-left max-h-[85vh] flex flex-col">
+    <div class="relative w-full max-w-lg bg-[#111624] border border-surface-border rounded-2xl p-6 shadow-glass text-left flex flex-col">
       <div class="flex items-center justify-between pb-4 border-b border-surface-border">
         <h2 class="text-base font-bold text-white">Terms of Service</h2>
-        <button id="closeTosModalBtn" class="text-slate-400 hover:text-white p-1 rounded-lg">
+        <button id="closeTosBtn" class="text-slate-400 hover:text-white p-1">
           <i data-lucide="x" class="w-5 h-5"></i>
         </button>
       </div>
-      <div class="overflow-y-auto py-4 space-y-3 text-xs sm:text-sm text-slate-300 leading-relaxed">
-        <p><strong class="text-white">1. Community Curation:</strong> WebKoot is an open index curated by the community for cataloging and discovering internet resources, tools, and entertainment.</p>
-        <p><strong class="text-white">2. Permitted Use:</strong> Users agree to suggest and submit legitimate, safe web links that adhere to general internet safety and copyright standards. Do not submit malicious links, spam, malware, or phishing campaigns.</p>
-        <p><strong class="text-white">3. Disclaimer:</strong> All directory listings are provided "as is". WebKoot does not host, stream, or store any third-party media or copyrighted materials directly on this static site.</p>
+      <div class="py-4 space-y-3 text-xs sm:text-sm text-slate-300 leading-relaxed">
+        <p><strong class="text-white">Directory Role:</strong> WebKoot is an indexing directory. No media files, streams, or proprietary tools are hosted on this repository.</p>
+        <p><strong class="text-white">Community Submissions:</strong> Contributions to this index must comply with safe web standards and GitHub Acceptable Use Policies.</p>
       </div>
       <div class="pt-3 border-t border-surface-border flex justify-end">
-        <button id="closeTosBtnBottom" class="px-4 py-2 rounded-xl text-xs font-semibold bg-surface-card hover:bg-surface-cardHover border border-surface-border text-white">
+        <button id="closeTosBottomBtn" class="px-4 py-2 rounded-xl text-xs font-semibold bg-surface-card hover:bg-slate-800 border border-surface-border text-white transition-all">
           I Understand
         </button>
       </div>
     </div>
   </div>
 
-  <div id="submitModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm hidden">
-    <div class="relative w-full max-w-md bg-[#111522] border border-surface-border rounded-2xl p-6 shadow-glass text-left">
+  <div id="submitModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden">
+    <div class="relative w-full max-w-md bg-[#111624] border border-surface-border rounded-2xl p-6 shadow-glass text-left">
       <div class="flex items-center justify-between pb-4 border-b border-surface-border">
-        <div class="flex items-center gap-2.5">
-          <div class="w-8 h-8 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center border border-indigo-500/30">
-            <i data-lucide="send" class="w-4 h-4"></i>
-          </div>
-          <h2 class="text-base font-bold text-white">Submit New Resource</h2>
-        </div>
-        <button id="closeSubmitModalBtn" class="text-slate-400 hover:text-white p-1 rounded-lg">
+        <h2 class="text-base font-bold text-white">Submit to WebKoot</h2>
+        <button id="closeSubmitModalBtn" class="text-slate-400 hover:text-white p-1">
           <i data-lucide="x" class="w-5 h-5"></i>
         </button>
       </div>
-
-      <form id="submitLinkForm" class="mt-4 space-y-4">
-        <div>
-          <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5">Category *</label>
-          <select 
-            id="formCategorySelect" 
-            required 
-            class="w-full bg-[#0a0d14] border border-surface-border rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          ></select>
+      <div class="py-4 space-y-4 text-xs sm:text-sm text-slate-300">
+        <p>Since WebKoot is open-source on GitHub, you can contribute new links directly by creating an issue or opening a pull request.</p>
+        <div class="p-3.5 rounded-xl bg-[#090c13] border border-surface-border space-y-2">
+          <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider block">Recommended format</span>
+          <p class="font-mono text-xs text-indigo-300 break-all">- Title: Example<br>- URL: https://example.com<br>- Category: Anime / Movies / Tools</p>
         </div>
-
-        <div>
-          <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5">Website Title *</label>
-          <input 
-            type="text" 
-            id="formTitleInput" 
-            required 
-            placeholder="e.g. MyAnimeList, Steam, Amazon"
-            class="w-full bg-[#0a0d14] border border-surface-border rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          />
-        </div>
-
-        <div>
-          <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5">URL *</label>
-          <input 
-            type="url" 
-            id="formUrlInput" 
-            required 
-            placeholder="https://example.com"
-            class="w-full bg-[#0a0d14] border border-surface-border rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          />
-        </div>
-
-        <div>
-          <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5">Badge / Tag (Optional)</label>
-          <input 
-            type="text" 
-            id="formBadgeInput" 
-            placeholder="e.g. Free, Database, Official" 
-            class="w-full bg-[#0a0d14] border border-surface-border rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          />
-        </div>
-
-        <div>
-          <label class="block text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1.5">Description</label>
-          <textarea 
-            id="formDescInput" 
-            rows="2" 
-            placeholder="Quick summary of why this resource is useful..."
-            class="w-full bg-[#0a0d14] border border-surface-border rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-slate-200 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 resize-none"
-          ></textarea>
-        </div>
-
-        <div class="pt-2 flex items-center justify-end gap-3 border-t border-surface-border">
-          <button 
-            type="button" 
-            id="cancelSubmitBtn" 
-            class="px-4 py-2 rounded-xl text-xs font-semibold text-slate-400 hover:text-white transition-colors"
-          >
-            Cancel
-          </button>
-          <button 
-            type="submit" 
-            class="px-5 py-2 rounded-xl text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white shadow-glow transition-all"
-          >
-            Add to Directory
-          </button>
-        </div>
-      </form>
+      </div>
+      <div class="pt-3 border-t border-surface-border flex items-center justify-end gap-2.5">
+        <button id="cancelSubmitModalBtn" class="px-4 py-2 rounded-xl text-xs font-semibold text-slate-400 hover:text-white">
+          Cancel
+        </button>
+        <a 
+          href="https://github.com" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-semibold bg-indigo-600 hover:bg-indigo-500 text-white shadow-glow transition-all"
+        >
+          <span>Open GitHub</span>
+          <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+        </a>
+      </div>
     </div>
   </div>
 
-  <div id="toast" class="fixed bottom-6 right-6 z-50 flex items-center gap-2.5 px-4 py-3 rounded-xl bg-surface-card border border-surface-border text-slate-100 text-xs shadow-2xl transition-all duration-300 translate-y-20 opacity-0 pointer-events-none">
-    <i data-lucide="check" id="toastIcon" class="w-4 h-4 text-emerald-400"></i>
-    <span id="toastMsg">Action complete</span>
-  </div>
-
   <script>
-    const CATEGORIES = [
-      {
-        id: "anime",
-        title: "Anime",
-        image: "https://images.unsplash.com/photo-1578632767115-351597cf2477?w=800&auto=format&fit=crop&q=80",
-        fallbackBg: "bg-gradient-to-tr from-pink-900 via-purple-900 to-indigo-950"
-      },
-      {
-        id: "movies",
-        title: "Movies & TV",
-        image: "https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=800&auto=format&fit=crop&q=80",
-        fallbackBg: "bg-gradient-to-tr from-amber-900 via-orange-950 to-stone-900"
-      },
-      {
-        id: "shops",
-        title: "Shops",
-        image: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=800&auto=format&fit=crop&q=80",
-        fallbackBg: "bg-gradient-to-tr from-emerald-950 via-teal-950 to-slate-900"
-      },
-      {
-        id: "tools",
-        title: "Tools",
-        image: "https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=800&auto=format&fit=crop&q=80",
-        fallbackBg: "bg-gradient-to-tr from-indigo-950 via-blue-950 to-slate-900"
-      },
-      {
-        id: "gaming",
-        title: "Gaming",
-        image: "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=800&auto=format&fit=crop&q=80",
-        fallbackBg: "bg-gradient-to-tr from-violet-950 via-purple-950 to-slate-900"
-      },
-      {
-        id: "books",
-        title: "Books",
-        image: "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=800&auto=format&fit=crop&q=80",
-        fallbackBg: "bg-gradient-to-tr from-cyan-950 via-sky-950 to-slate-900"
-      },
-      {
-        id: "dev",
-        title: "Developer",
-        image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&auto=format&fit=crop&q=80",
-        fallbackBg: "bg-gradient-to-tr from-blue-950 via-slate-900 to-black"
-      },
-      {
-        id: "music",
-        title: "Music",
-        image: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=800&auto=format&fit=crop&q=80",
-        fallbackBg: "bg-gradient-to-tr from-rose-950 via-red-950 to-slate-900"
-      }
-    ];
+    const policyModal = document.getElementById('policyModal');
+    const tosModal = document.getElementById('tosModal');
+    const submitModal = document.getElementById('submitModal');
 
-    const DEFAULT_LINKS = [
-      {
-        id: "lnk-1",
-        categoryId: "anime",
-        title: "MyAnimeList",
-        url: "https://myanimelist.net",
-        badge: "Tracker",
-        description: "Largest active anime and manga social cataloging and community hub."
-      },
-      {
-        id: "lnk-2",
-        categoryId: "anime",
-        title: "AniList",
-        url: "https://anilist.co",
-        badge: "Modern UI",
-        description: "Track, share, and discover anime and manga with a sleek modern interface."
-      },
-      {
-        id: "lnk-3",
-        categoryId: "anime",
-        title: "LiveChart.me",
-        url: "https://livechart.me",
-        badge: "Schedule",
-        description: "Real-time seasonal schedule guide showing when episodes air."
-      },
-      {
-        id: "lnk-4",
-        categoryId: "movies",
-        title: "IMDb",
-        url: "https://imdb.com",
-        badge: "Database",
-        description: "World's most popular database for movie ratings, actors, trivia, and reviews."
-      },
-      {
-        id: "lnk-5",
-        categoryId: "movies",
-        title: "Letterboxd",
-        url: "https://letterboxd.com",
-        badge: "Social",
-        description: "Social network for film lovers to keep a diary of movies watched."
-      },
-      {
-        id: "lnk-6",
-        categoryId: "movies",
-        title: "JustWatch",
-        url: "https://justwatch.com",
-        badge: "Search Engine",
-        description: "Streaming search engine that reveals which platform is hosting any movie or show."
-      },
-      {
-        id: "lnk-7",
-        categoryId: "shops",
-        title: "CamelCamelCamel",
-        url: "https://camelcamelcamel.com",
-        badge: "Price Tracker",
-        description: "Free Amazon price drop tracker with historical charts and drop alerts."
-      },
-      {
-        id: "lnk-8",
-        categoryId: "shops",
-        title: "Dealabs / Slickdeals",
-        url: "https://slickdeals.net",
-        badge: "Community Deals",
-        description: "Community-driven coupon codes, bargain alerts, and shopping discounts."
-      },
-      {
-        id: "lnk-9",
-        categoryId: "tools",
-        title: "TinyPNG",
-        url: "https://tinypng.com",
-        badge: "Image Compression",
-        description: "Smart lossy compression for WebP, PNG, and JPEG files with zero setup."
-      },
-      {
-        id: "lnk-10",
-        categoryId: "tools",
-        title: "CyberChef",
-        url: "https://gchq.github.io/CyberChef",
-        badge: "Swiss Army Knife",
-        description: "The cyber Swiss Army Knife for encryption, encoding, compression, and parsing."
-      },
-      {
-        id: "lnk-11",
-        categoryId: "tools",
-        title: "Excalidraw",
-        url: "https://excalidraw.com",
-        badge: "Whiteboard",
-        description: "Virtual collaborative whiteboard for sketching diagrams with a hand-drawn feel."
-      },
-      {
-        id: "lnk-12",
-        categoryId: "gaming",
-        title: "Steam Database (SteamDB)",
-        url: "https://steamdb.info",
-        badge: "Analytics",
-        description: "Database of everything on Steam, tracking live player counts, prices, and updates."
-      },
-      {
-        id: "lnk-13",
-        categoryId: "gaming",
-        title: "Itch.io",
-        url: "https://itch.io",
-        badge: "Indie Marketplace",
-        description: "Open marketplace for independent video games, tabletop RPGs, and game assets."
-      },
-      {
-        id: "lnk-14",
-        categoryId: "books",
-        title: "Project Gutenberg",
-        url: "https://gutenberg.org",
-        badge: "Free Library",
-        description: "Over 70,000 free public domain eBooks to download or read online."
-      },
-      {
-        id: "lnk-15",
-        categoryId: "dev",
-        title: "GitHub",
-        url: "https://github.com",
-        badge: "Essential",
-        description: "Global development platform to host code, collaborate, and automate pipelines."
-      },
-      {
-        id: "lnk-16",
-        categoryId: "dev",
-        title: "MDN Web Docs",
-        url: "https://developer.mozilla.org",
-        badge: "Documentation",
-        description: "Definitive standards documentation for HTML, CSS, JavaScript, and Web APIs."
-      },
-      {
-        id: "lnk-17",
-        categoryId: "music",
-        title: "Lofi Cafe",
-        url: "https://lofi.cafe",
-        badge: "Ambience",
-        description: "Minimalist lo-fi music player with calming visual backgrounds for studying."
-      }
-    ];
+    const openPolicyBtn = document.getElementById('openPolicyBtn');
+    const closePolicyBtn = document.getElementById('closePolicyBtn');
+    const closePolicyBottomBtn = document.getElementById('closePolicyBottomBtn');
 
-    const STORAGE_KEY = "webkoot_directory_items_v2";
-    let linkItems = [];
-    let currentCategoryId = null;
+    const openTosBtn = document.getElementById('openTosBtn');
+    const closeTosBtn = document.getElementById('closeTosBtn');
+    const closeTosBottomBtn = document.getElementById('closeTosBottomBtn');
 
-    function initData() {
-      try {
-        const stored = localStorage.getItem(STORAGE_KEY);
-        if (stored) {
-          linkItems = JSON.parse(stored);
-        } else {
-          linkItems = [...DEFAULT_LINKS];
-          persistData();
-        }
-      } catch (e) {
-        linkItems = [...DEFAULT_LINKS];
-      }
+    const openSubmitBtn = document.getElementById('openSubmitBtn');
+    const closeSubmitModalBtn = document.getElementById('closeSubmitModalBtn');
+    const cancelSubmitModalBtn = document.getElementById('cancelSubmitModalBtn');
+
+    function toggleModal(modal, show) {
+      if (show) modal.classList.remove('hidden');
+      else modal.classList.add('hidden');
     }
 
-    function persistData() {
-      try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(linkItems));
-      } catch (e) {
-        console.error("Storage save failed", e);
-      }
-    }
+    openPolicyBtn.addEventListener('click', () => toggleModal(policyModal, true));
+    closePolicyBtn.addEventListener('click', () => toggleModal(policyModal, false));
+    closePolicyBottomBtn.addEventListener('click', () => toggleModal(policyModal, false));
 
-    function getDomain(url) {
-      try {
-        return new URL(url).hostname.replace(/^www\./, '');
-      } catch (e) {
-        return url;
-      }
-    }
+    openTosBtn.addEventListener('click', () => toggleModal(tosModal, true));
+    closeTosBtn.addEventListener('click', () => toggleModal(tosModal, false));
+    closeTosBottomBtn.addEventListener('click', () => toggleModal(tosModal, false));
 
-    function getFaviconUrl(url) {
-      const domain = getDomain(url);
-      return `https://www.google.com/s2/favicons?domain=${domain}&sz=64`;
-    }
+    openSubmitBtn.addEventListener('click', () => toggleModal(submitModal, true));
+    closeSubmitModalBtn.addEventListener('click', () => toggleModal(submitModal, false));
+    cancelSubmitModalBtn.addEventListener('click', () => toggleModal(submitModal, false));
 
-    function notify(message) {
-      const toast = document.getElementById("toast");
-      const toastMsg = document.getElementById("toastMsg");
-      toastMsg.textContent = message;
-      toast.classList.remove("translate-y-20", "opacity-0", "pointer-events-none");
-      setTimeout(() => {
-        toast.classList.add("translate-y-20", "opacity-0", "pointer-events-none");
-      }, 2500);
-    }
-
-    function renderHomeCategories() {
-      const grid = document.getElementById("categoryCardsGrid");
-      grid.innerHTML = CATEGORIES.map(cat => {
-        return `
-          <a 
-            href="#${cat.id}"
-            class="group relative block aspect-[3/4] sm:aspect-[4/5] rounded-2xl overflow-hidden border border-surface-border hover:border-indigo-500/60 shadow-lg hover:shadow-glow transition-all duration-300 hover:-translate-y-1.5 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          >
-            <img 
-              src="${cat.image}" 
-              alt="${cat.title}" 
-              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              onerror="this.onerror=null; this.parentElement.classList.add('${cat.fallbackBg}'); this.style.display='none';"
-            />
-
-            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/10 group-hover:via-black/20 transition-colors"></div>
-
-            <div class="absolute inset-x-0 bottom-0 p-4 sm:p-5 flex items-center justify-between">
-              <span class="text-base sm:text-lg font-bold text-white tracking-wide group-hover:text-indigo-300 transition-colors">
-                ${cat.title}
-              </span>
-              <div class="w-8 h-8 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white group-hover:bg-indigo-600 group-hover:border-indigo-500 transition-all">
-                <i data-lucide="arrow-right" class="w-4 h-4 group-hover:translate-x-0.5 transition-transform"></i>
-              </div>
-            </div>
-          </a>
-        `;
-      }).join("");
-
-      if (window.lucide) lucide.createIcons();
-    }
-
-    function renderCategoryPage(catId, filterText = "") {
-      const category = CATEGORIES.find(c => c.id === catId);
-      if (!category) return navigateHome();
-
-      currentCategoryId = catId;
-      document.getElementById("activeCategoryTitle").textContent = category.title;
-      document.getElementById("categoryIconBadge").innerHTML = `<i data-lucide="folder" class="w-5 h-5 text-indigo-400"></i>`;
-
-      const allCatLinks = linkItems.filter(l => l.categoryId === catId);
-      document.getElementById("activeCategoryCount").textContent = `${allCatLinks.length} resource${allCatLinks.length === 1 ? '' : 's'} available`;
-
-      const cleanQuery = filterText.trim().toLowerCase();
-      const filtered = allCatLinks.filter(item => {
-        if (!cleanQuery) return true;
-        return (
-          item.title.toLowerCase().includes(cleanQuery) ||
-          (item.description && item.description.toLowerCase().includes(cleanQuery)) ||
-          (item.badge && item.badge.toLowerCase().includes(cleanQuery)) ||
-          item.url.toLowerCase().includes(cleanQuery)
-        );
-      });
-
-      const linksGrid = document.getElementById("categoryLinksGrid");
-      const emptyState = document.getElementById("emptyCategoryState");
-
-      if (filtered.length === 0) {
-        linksGrid.innerHTML = "";
-        emptyState.classList.remove("hidden");
-      } else {
-        emptyState.classList.add("hidden");
-        linksGrid.innerHTML = filtered.map(link => {
-          const domain = getDomain(link.url);
-          const favicon = getFaviconUrl(link.url);
-          return `
-            <div class="group relative flex flex-col justify-between p-4 rounded-2xl bg-surface-card hover:bg-surface-cardHover border border-surface-border hover:border-indigo-500/40 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-glow">
-              <div>
-                <div class="flex items-start justify-between gap-3 mb-2.5">
-                  <div class="flex items-center gap-3 min-w-0">
-                    <div class="w-9 h-9 rounded-lg bg-slate-900 border border-surface-border flex items-center justify-center overflow-hidden flex-shrink-0 p-1.5 shadow-sm">
-                      <img 
-                        src="${favicon}" 
-                        alt="${link.title}" 
-                        class="w-full h-full object-contain"
-                        onerror="this.onerror=null; this.src='https://placehold.co/48x48/111522/a5b4fc?text=${link.title.charAt(0).toUpperCase()}';"
-                      />
-                    </div>
-                    <div class="min-w-0">
-                      <h4 class="text-sm font-bold text-white group-hover:text-indigo-300 transition-colors truncate">${link.title}</h4>
-                      <p class="text-[11px] font-mono text-slate-400 truncate">${domain}</p>
-                    </div>
-                  </div>
-
-                  ${link.isCustom ? `
-                    <button 
-                      onclick="deleteLinkItem('${link.id}')"
-                      class="p-1 rounded-lg hover:bg-rose-500/20 text-slate-500 hover:text-rose-400 transition-colors"
-                      title="Remove Link"
-                    >
-                      <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
-                    </button>
-                  ` : ''}
-                </div>
-
-                <p class="text-xs text-slate-400 line-clamp-2 mb-4 leading-relaxed">${link.description || 'Curated link on WebKoot.'}</p>
-              </div>
-
-              <div class="pt-3 border-t border-surface-border flex items-center justify-between text-xs">
-                ${link.badge ? `
-                  <span class="inline-flex items-center px-2 py-0.5 rounded-md bg-slate-900 border border-surface-border text-slate-300 text-[10px] font-medium">
-                    ${link.badge}
-                  </span>
-                ` : `<span></span>`}
-
-                <div class="flex items-center gap-1.5">
-                  <button 
-                    onclick="copyLinkAddress('${link.url}')" 
-                    class="p-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 transition-colors"
-                    title="Copy URL"
-                  >
-                    <i data-lucide="copy" class="w-3.5 h-3.5"></i>
-                  </button>
-
-                  <a 
-                    href="${link.url}" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    class="inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-indigo-600/20 hover:bg-indigo-600 text-indigo-300 hover:text-white font-semibold transition-all text-xs"
-                  >
-                    <span>Visit</span>
-                    <i data-lucide="external-link" class="w-3 h-3"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-          `;
-        }).join("");
-      }
-
-      if (window.lucide) lucide.createIcons();
-    }
-
-    const policyModal = document.getElementById("policyModal");
-    const tosModal = document.getElementById("tosModal");
-    const openPolicyBtn = document.getElementById("openPolicyBtn");
-    const openTosBtn = document.getElementById("openTosBtn");
-    const closePolicyModalBtn = document.getElementById("closePolicyModalBtn");
-    const closePolicyBtnBottom = document.getElementById("closePolicyBtnBottom");
-    const closeTosModalBtn = document.getElementById("closeTosModalBtn");
-    const closeTosBtnBottom = document.getElementById("closeTosBtnBottom");
-
-    function openPolicy() { policyModal.classList.remove("hidden"); }
-    function closePolicy() { policyModal.classList.add("hidden"); }
-    function openTos() { tosModal.classList.remove("hidden"); }
-    function closeTos() { tosModal.classList.add("hidden"); }
-
-    openPolicyBtn.addEventListener("click", openPolicy);
-    closePolicyModalBtn.addEventListener("click", closePolicy);
-    closePolicyBtnBottom.addEventListener("click", closePolicy);
-
-    openTosBtn.addEventListener("click", openTos);
-    closeTosModalBtn.addEventListener("click", closeTos);
-    closeTosBtnBottom.addEventListener("click", closeTos);
-
-    function navigateToCategory(catId) {
-      window.location.hash = catId;
-    }
-
-    function navigateHome() {
-      window.location.hash = "";
-    }
-
-    function handleRouting() {
-      const hash = window.location.hash.replace("#", "").trim();
-      const homeView = document.getElementById("homeView");
-      const categoryView = document.getElementById("categoryView");
-      const searchInput = document.getElementById("categorySearchInput");
-
-      if (hash && CATEGORIES.some(c => c.id === hash)) {
-        homeView.classList.add("hidden");
-        categoryView.classList.remove("hidden");
-        searchInput.value = "";
-        document.getElementById("clearCategorySearchBtn").classList.add("hidden");
-        renderCategoryPage(hash);
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      } else {
-        categoryView.classList.add("hidden");
-        homeView.classList.remove("hidden");
-        currentCategoryId = null;
-        renderHomeCategories();
-      }
-    }
-
-    window.addEventListener("hashchange", handleRouting);
-
-    window.copyLinkAddress = function(url) {
-      const el = document.createElement("textarea");
-      el.value = url;
-      document.body.appendChild(el);
-      el.select();
-      try {
-        document.execCommand("copy");
-        notify("Link copied to clipboard!");
-      } catch (err) {
-        notify("Failed to copy link");
-      }
-      document.body.removeChild(el);
-    };
-
-    window.deleteLinkItem = function(id) {
-      const target = linkItems.find(l => l.id === id);
-      if (!target) return;
-      linkItems = linkItems.filter(l => l.id !== id);
-      persistData();
-      renderCategoryPage(currentCategoryId, document.getElementById("categorySearchInput").value);
-      notify(`Removed "${target.title}"`);
-    };
-
-    const categorySearchInput = document.getElementById("categorySearchInput");
-    const clearCategorySearchBtn = document.getElementById("clearCategorySearchBtn");
-
-    categorySearchInput.addEventListener("input", (e) => {
-      const val = e.target.value;
-      if (val.length > 0) {
-        clearCategorySearchBtn.classList.remove("hidden");
-      } else {
-        clearCategorySearchBtn.classList.add("hidden");
-      }
-      renderCategoryPage(currentCategoryId, val);
-    });
-
-    clearCategorySearchBtn.addEventListener("click", () => {
-      categorySearchInput.value = "";
-      clearCategorySearchBtn.classList.add("hidden");
-      renderCategoryPage(currentCategoryId, "");
-    });
-
-    const submitModal = document.getElementById("submitModal");
-    const openSubmitModalBtn = document.getElementById("openSubmitModalBtn");
-    const closeSubmitModalBtn = document.getElementById("closeSubmitModalBtn");
-    const cancelSubmitBtn = document.getElementById("cancelSubmitBtn");
-    const submitLinkForm = document.getElementById("submitLinkForm");
-    const formCategorySelect = document.getElementById("formCategorySelect");
-    const submitToThisCatBtn = document.getElementById("submitToThisCatBtn");
-
-    function populateModalCategories() {
-      formCategorySelect.innerHTML = CATEGORIES.map(c => `
-        <option value="${c.id}">${c.title}</option>
-      `).join("");
-    }
-
-    function openModalWithContext(preferredCatId = null) {
-      populateModalCategories();
-      submitLinkForm.reset();
-      if (preferredCatId) {
-        formCategorySelect.value = preferredCatId;
-      } else if (currentCategoryId) {
-        formCategorySelect.value = currentCategoryId;
-      }
-      submitModal.classList.remove("hidden");
-      setTimeout(() => document.getElementById("formTitleInput").focus(), 40);
-    }
-
-    function closeModal() {
-      submitModal.classList.add("hidden");
-    }
-
-    openSubmitModalBtn.addEventListener("click", () => openModalWithContext());
-    if (submitToThisCatBtn) {
-      submitToThisCatBtn.addEventListener("click", () => openModalWithContext(currentCategoryId));
-    }
-    closeSubmitModalBtn.addEventListener("click", closeModal);
-    cancelSubmitBtn.addEventListener("click", closeModal);
-
-    submitLinkForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-      let rawUrl = document.getElementById("formUrlInput").value.trim();
-      if (!/^https?:\/\//i.test(rawUrl)) {
-        rawUrl = "https://" + rawUrl;
-      }
-
-      const selectedCat = formCategorySelect.value;
-      const title = document.getElementById("formTitleInput").value.trim();
-      const badge = document.getElementById("formBadgeInput").value.trim() || "User Link";
-      const desc = document.getElementById("formDescInput").value.trim() || "Curated link added to WebKoot.";
-
-      const newEntry = {
-        id: "custom-" + Date.now(),
-        categoryId: selectedCat,
-        title: title,
-        url: rawUrl,
-        badge: badge,
-        description: desc,
-        isCustom: true
-      };
-
-      linkItems.unshift(newEntry);
-      persistData();
-      closeModal();
-      notify(`Added "${title}"!`);
-
-      if (currentCategoryId === selectedCat) {
-        renderCategoryPage(selectedCat, categorySearchInput.value);
-      } else {
-        window.location.hash = selectedCat;
-      }
-    });
-
-    document.getElementById("homeLogoLink").addEventListener("click", (e) => {
-      e.preventDefault();
-      navigateHome();
-    });
-    document.getElementById("backToHomeBtn").addEventListener("click", navigateHome);
-
-    window.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") {
-        if (!submitModal.classList.contains("hidden")) closeModal();
-        if (!policyModal.classList.contains("hidden")) closePolicy();
-        if (!tosModal.classList.contains("hidden")) closeTos();
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        toggleModal(policyModal, false);
+        toggleModal(tosModal, false);
+        toggleModal(submitModal, false);
       }
     });
 
     window.onload = function () {
-      initData();
-      populateModalCategories();
-      handleRouting();
+      if (window.lucide) {
+        lucide.createIcons();
+      }
     };
   </script>
 </body>
