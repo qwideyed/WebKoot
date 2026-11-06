@@ -5,13 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>WebKoot — Curated Index & Directory</title>
 
-  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 
-  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -48,7 +44,6 @@
   </script>
 
   <style>
-    /* Custom Scrollbar */
     ::-webkit-scrollbar {
       width: 7px;
       height: 7px;
@@ -63,8 +58,6 @@
     ::-webkit-scrollbar-thumb:hover {
       background: #3b4566;
     }
-
-    /* Ambient background mesh */
     .bg-mesh {
       background-image: 
         radial-gradient(circle at 15% 15%, rgba(99, 102, 241, 0.08) 0%, transparent 40%),
@@ -73,7 +66,6 @@
         linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
       background-size: 100% 100%, 100% 100%, 36px 36px, 36px 36px;
     }
-
     .glassmorphic {
       background: rgba(14, 18, 28, 0.75);
       backdrop-filter: blur(14px);
@@ -83,15 +75,12 @@
 </head>
 <body class="bg-[#0a0d14] text-slate-100 min-h-screen font-sans bg-mesh selection:bg-indigo-500 selection:text-white flex flex-col justify-between">
 
-  <!-- Minimal Header: ONLY Site Name on Left & Policy, TOS, Submit on Right -->
   <header class="sticky top-0 z-40 border-b border-surface-border glassmorphic">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-      <!-- Site Logo / Name (No Icon) -->
       <a href="#" id="homeLogoLink" class="text-xl sm:text-2xl font-extrabold tracking-tight text-white hover:text-indigo-400 transition-colors">
         WebKoot
       </a>
 
-      <!-- Right Header Actions: Policy, TOS, and Submit -->
       <div class="flex items-center gap-2 sm:gap-4">
         <button 
           id="openPolicyBtn" 
@@ -107,7 +96,6 @@
           Terms of Service
         </button>
 
-        <!-- Submit Button -->
         <button 
           id="openSubmitModalBtn"
           class="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-indigo-600 hover:bg-indigo-500 active:scale-95 text-white shadow-glow transition-all duration-200"
@@ -119,27 +107,18 @@
     </div>
   </header>
 
-  <!-- Dynamic Views Container -->
   <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
-    
-    <!-- ================= VIEW 1: HOME (CATEGORY CARDS GRID) ================= -->
-    <section id="homeView" class="space-y-8 animate-in fade-in duration-300">
-      <!-- Hero Headline (Community-controlled) -->
+    <section id="homeView" class="space-y-8">
       <div class="text-center max-w-2xl mx-auto pt-2 pb-2">
         <p class="text-sm sm:text-base text-slate-400 font-medium">
           A community-controlled and curated directory index.
         </p>
       </div>
 
-      <!-- Categories Grid: Pure visual image/poster cards -->
-      <div id="categoryCardsGrid" class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
-        <!-- Rendered dynamically via JS -->
-      </div>
+      <div id="categoryCardsGrid" class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6"></div>
     </section>
 
-    <!-- ================= VIEW 2: CATEGORY DIRECTORY ================= -->
-    <section id="categoryView" class="hidden space-y-6 animate-in fade-in duration-300">
-      <!-- Breadcrumb / Back Bar -->
+    <section id="categoryView" class="hidden space-y-6">
       <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-surface-border">
         <div class="flex items-center gap-3">
           <button 
@@ -152,7 +131,7 @@
           
           <div class="flex items-center gap-2.5">
             <div id="categoryIconBadge" class="w-9 h-9 rounded-xl flex items-center justify-center text-white bg-indigo-600/30 border border-indigo-500/30">
-              <i data-lucide="folder" class="w-5 h-5"></i>
+              <i data-lucide="folder" class="w-5 h-5 text-indigo-400"></i>
             </div>
             <div>
               <h2 id="activeCategoryTitle" class="text-xl sm:text-2xl font-bold text-white tracking-tight">Category Name</h2>
@@ -161,7 +140,6 @@
           </div>
         </div>
 
-        <!-- In-Category Quick Search Filter -->
         <div class="relative w-full sm:w-72">
           <i data-lucide="search" class="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400"></i>
           <input 
@@ -176,12 +154,8 @@
         </div>
       </div>
 
-      <!-- Links Grid -->
-      <div id="categoryLinksGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-        <!-- Rendered dynamically via JS -->
-      </div>
+      <div id="categoryLinksGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"></div>
 
-      <!-- Empty Links Placeholder -->
       <div id="emptyCategoryState" class="hidden py-16 text-center">
         <div class="w-14 h-14 mx-auto rounded-2xl bg-surface-card flex items-center justify-center text-slate-500 mb-3 border border-surface-border">
           <i data-lucide="folder-search" class="w-6 h-6"></i>
@@ -196,16 +170,13 @@
         </button>
       </div>
     </section>
-
   </main>
 
-  <!-- Footer -->
   <footer class="border-t border-surface-border py-6 text-center text-xs text-slate-500">
     <p>WebKoot — Community-driven open web launchpad ready for GitHub Pages</p>
   </footer>
 
-  <!-- ================= PRIVACY POLICY MODAL ================= -->
-  <div id="policyModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden animate-in fade-in duration-200">
+  <div id="policyModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden">
     <div class="relative w-full max-w-lg bg-[#111522] border border-surface-border rounded-2xl p-6 shadow-glass text-left max-h-[85vh] flex flex-col">
       <div class="flex items-center justify-between pb-4 border-b border-surface-border">
         <h2 class="text-base font-bold text-white">Privacy Policy</h2>
@@ -226,8 +197,7 @@
     </div>
   </div>
 
-  <!-- ================= TERMS OF SERVICE MODAL ================= -->
-  <div id="tosModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden animate-in fade-in duration-200">
+  <div id="tosModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm hidden">
     <div class="relative w-full max-w-lg bg-[#111522] border border-surface-border rounded-2xl p-6 shadow-glass text-left max-h-[85vh] flex flex-col">
       <div class="flex items-center justify-between pb-4 border-b border-surface-border">
         <h2 class="text-base font-bold text-white">Terms of Service</h2>
@@ -248,8 +218,7 @@
     </div>
   </div>
 
-  <!-- ================= SUBMIT LINK MODAL ================= -->
-  <div id="submitModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm hidden animate-in fade-in duration-200">
+  <div id="submitModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm hidden">
     <div class="relative w-full max-w-md bg-[#111522] border border-surface-border rounded-2xl p-6 shadow-glass text-left">
       <div class="flex items-center justify-between pb-4 border-b border-surface-border">
         <div class="flex items-center gap-2.5">
@@ -270,9 +239,7 @@
             id="formCategorySelect" 
             required 
             class="w-full bg-[#0a0d14] border border-surface-border rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-slate-200 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          >
-            <!-- Populated via JS -->
-          </select>
+          ></select>
         </div>
 
         <div>
@@ -336,15 +303,12 @@
     </div>
   </div>
 
-  <!-- Toast Notification -->
   <div id="toast" class="fixed bottom-6 right-6 z-50 flex items-center gap-2.5 px-4 py-3 rounded-xl bg-surface-card border border-surface-border text-slate-100 text-xs shadow-2xl transition-all duration-300 translate-y-20 opacity-0 pointer-events-none">
     <i data-lucide="check" id="toastIcon" class="w-4 h-4 text-emerald-400"></i>
     <span id="toastMsg">Action complete</span>
   </div>
 
-  <!-- Application Logic -->
   <script>
-    // --- Categories Configuration with customizable image support ---
     const CATEGORIES = [
       {
         id: "anime",
@@ -396,9 +360,7 @@
       }
     ];
 
-    // --- Curated Default Seed Links ---
     const DEFAULT_LINKS = [
-      // Anime
       {
         id: "lnk-1",
         categoryId: "anime",
@@ -423,7 +385,6 @@
         badge: "Schedule",
         description: "Real-time seasonal schedule guide showing when episodes air."
       },
-      // Movies & TV
       {
         id: "lnk-4",
         categoryId: "movies",
@@ -448,7 +409,6 @@
         badge: "Search Engine",
         description: "Streaming search engine that reveals which platform is hosting any movie or show."
       },
-      // Shops
       {
         id: "lnk-7",
         categoryId: "shops",
@@ -465,7 +425,6 @@
         badge: "Community Deals",
         description: "Community-driven coupon codes, bargain alerts, and shopping discounts."
       },
-      // Tools
       {
         id: "lnk-9",
         categoryId: "tools",
@@ -490,7 +449,6 @@
         badge: "Whiteboard",
         description: "Virtual collaborative whiteboard for sketching diagrams with a hand-drawn feel."
       },
-      // Gaming
       {
         id: "lnk-12",
         categoryId: "gaming",
@@ -507,7 +465,6 @@
         badge: "Indie Marketplace",
         description: "Open marketplace for independent video games, tabletop RPGs, and game assets."
       },
-      // Books
       {
         id: "lnk-14",
         categoryId: "books",
@@ -516,7 +473,6 @@
         badge: "Free Library",
         description: "Over 70,000 free public domain eBooks to download or read online."
       },
-      // Developer
       {
         id: "lnk-15",
         categoryId: "dev",
@@ -533,7 +489,6 @@
         badge: "Documentation",
         description: "Definitive standards documentation for HTML, CSS, JavaScript, and Web APIs."
       },
-      // Music
       {
         id: "lnk-17",
         categoryId: "music",
@@ -544,7 +499,6 @@
       }
     ];
 
-    // --- LocalStorage State ---
     const STORAGE_KEY = "webkoot_directory_items_v2";
     let linkItems = [];
     let currentCategoryId = null;
@@ -581,7 +535,19 @@
 
     function getFaviconUrl(url) {
       const domain = getDomain(url);
-    // --- Render Home Category Cards (Image poster with whole card link) ---
+      return `https://www.google.com/s2/favicons?domain=${domain}&sz=64`;
+    }
+
+    function notify(message) {
+      const toast = document.getElementById("toast");
+      const toastMsg = document.getElementById("toastMsg");
+      toastMsg.textContent = message;
+      toast.classList.remove("translate-y-20", "opacity-0", "pointer-events-none");
+      setTimeout(() => {
+        toast.classList.add("translate-y-20", "opacity-0", "pointer-events-none");
+      }, 2500);
+    }
+
     function renderHomeCategories() {
       const grid = document.getElementById("categoryCardsGrid");
       grid.innerHTML = CATEGORIES.map(cat => {
@@ -590,7 +556,6 @@
             href="#${cat.id}"
             class="group relative block aspect-[3/4] sm:aspect-[4/5] rounded-2xl overflow-hidden border border-surface-border hover:border-indigo-500/60 shadow-lg hover:shadow-glow transition-all duration-300 hover:-translate-y-1.5 focus:outline-none focus:ring-2 focus:ring-indigo-500"
           >
-            <!-- Card Image Background (Easy for you to replace the image URL in the CATEGORIES array) -->
             <img 
               src="${cat.image}" 
               alt="${cat.title}" 
@@ -598,10 +563,8 @@
               onerror="this.onerror=null; this.parentElement.classList.add('${cat.fallbackBg}'); this.style.display='none';"
             />
 
-            <!-- Subtle Gradient Overlay -->
             <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/10 group-hover:via-black/20 transition-colors"></div>
 
-            <!-- Card Label on Bottom -->
             <div class="absolute inset-x-0 bottom-0 p-4 sm:p-5 flex items-center justify-between">
               <span class="text-base sm:text-lg font-bold text-white tracking-wide group-hover:text-indigo-300 transition-colors">
                 ${cat.title}
@@ -614,10 +577,9 @@
         `;
       }).join("");
 
-      lucide.createIcons();
+      if (window.lucide) lucide.createIcons();
     }
 
-    // --- Render Category Page & Filter ---
     function renderCategoryPage(catId, filterText = "") {
       const category = CATEGORIES.find(c => c.id === catId);
       if (!category) return navigateHome();
@@ -716,10 +678,9 @@
         }).join("");
       }
 
-      lucide.createIcons();
+      if (window.lucide) lucide.createIcons();
     }
 
-    // --- Policy & TOS Modals Handling ---
     const policyModal = document.getElementById("policyModal");
     const tosModal = document.getElementById("tosModal");
     const openPolicyBtn = document.getElementById("openPolicyBtn");
@@ -742,7 +703,6 @@
     closeTosModalBtn.addEventListener("click", closeTos);
     closeTosBtnBottom.addEventListener("click", closeTos);
 
-    // --- Router / View Transitions ---
     function navigateToCategory(catId) {
       window.location.hash = catId;
     }
@@ -774,7 +734,6 @@
 
     window.addEventListener("hashchange", handleRouting);
 
-    // --- Global Actions & Helpers ---
     window.copyLinkAddress = function(url) {
       const el = document.createElement("textarea");
       el.value = url;
@@ -798,7 +757,6 @@
       notify(`Removed "${target.title}"`);
     };
 
-    // --- Search Filter inside category page ---
     const categorySearchInput = document.getElementById("categorySearchInput");
     const clearCategorySearchBtn = document.getElementById("clearCategorySearchBtn");
 
@@ -818,7 +776,6 @@
       renderCategoryPage(currentCategoryId, "");
     });
 
-    // --- Submit Modal Handling ---
     const submitModal = document.getElementById("submitModal");
     const openSubmitModalBtn = document.getElementById("openSubmitModalBtn");
     const closeSubmitModalBtn = document.getElementById("closeSubmitModalBtn");
@@ -883,23 +840,19 @@
       closeModal();
       notify(`Added "${title}"!`);
 
-      // If user is currently looking at this category, re-render it
       if (currentCategoryId === selectedCat) {
         renderCategoryPage(selectedCat, categorySearchInput.value);
       } else {
-        // Navigate there
         window.location.hash = selectedCat;
       }
     });
 
-    // Logo & Back Button handlers
     document.getElementById("homeLogoLink").addEventListener("click", (e) => {
       e.preventDefault();
       navigateHome();
     });
     document.getElementById("backToHomeBtn").addEventListener("click", navigateHome);
 
-    // Keyboard ESC to close modal
     window.addEventListener("keydown", (e) => {
       if (e.key === "Escape") {
         if (!submitModal.classList.contains("hidden")) closeModal();
@@ -908,7 +861,6 @@
       }
     });
 
-    // --- On Window Load ---
     window.onload = function () {
       initData();
       populateModalCategories();
